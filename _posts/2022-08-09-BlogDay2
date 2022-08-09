@@ -4,7 +4,7 @@ title: "Blog: Programming tricks for the Lennard Jones potential"
 author: Trevor Oldham
 ---
 
-In this post I will discuss the three tasks we must implement in order to develop and refine our Lennard Jones potential calculation. The results will be compared to the standard reference from the NIST.
+In this post I will discuss the tasks we must implement in order to develop and refine our Lennard Jones potential calculation. The results will be compared to the standard reference from the NIST.
 
 First we discuss the cutt off distance. This is the maximum distance from which we want to calculate the interaction between two molecules. Given N particles, we realize this is similar to the handshake problem, and the total number of handshakes (interactions) is equal to (N)*(N-1)/2. For a system with only 10 molecules, this would be 45 interactions. But in larger systems the computational work would be much more significant, meaning that we wish to choose a cutoff distance such that there are less interactions to evaluate, hopefully removing only the interactions of molecules that are far apart.
 
