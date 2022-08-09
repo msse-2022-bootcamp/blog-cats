@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "TITLE"
+title: "Interview with Joshua"
 author: Trevor Oldham
 ---
 
