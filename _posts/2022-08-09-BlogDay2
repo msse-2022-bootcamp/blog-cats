@@ -1,0 +1,19 @@
+---
+layout: post
+title: "Blog: Programming tricks for the Lennard Jones potential"
+author: Trevor Oldham
+---
+
+In this post I will discuss the tasks we must implement in order to develop and refine our Lennard Jones potential calculation. The results will be compared to the standard reference from the NIST.
+
+First we discuss the cutt off distance. This is the maximum distance from which we want to calculate the interaction between two molecules. Given N particles, we realize this is similar to the handshake problem, and the total number of handshakes (interactions) is equal to (N)*(N-1)/2. For a system with only 10 molecules, this would be 45 interactions. But in larger systems the computational work would be much more significant, meaning that we wish to choose a cutoff distance such that there are less interactions to evaluate, hopefully removing only the interactions of molecules that are far apart.
+
+Given a density of 1 (assumed to be molecules/unit volume, where the unit volume is equal to sigma, the hard shell radius) we can compute the number of molecules in the area given by a sphere of radius 1 and radius 10 to be
+    
+ $$\frac{4}{3} \pi (1)^3 = 4.189 \ molecules$$
+  $$\frac{4}{3} \pi (10)^3 = 4189 \ molecules$$
+    
+
+Using a cutoff distance will allow us to compute only the interactions that are significantly close to each other, where the pairwise energy is mostly negligible. However the risk is that we must choose an appropriate cutoff distance in order to include all the pairs that have substantial energy between them.
+
+Now we discuss the periodic boundaries, which is where we want to simulate a bulk liquid by surrounding our unit volume with other unit volumes. This is to mean that each molecule in the initial box will have a counterpart in the adjacent boxes. Then, the maximum distance the particles can be from one another is given by half the box length. To calculate the actual distance between molecules, we take the minimum of (distance, 10 - distance). 
